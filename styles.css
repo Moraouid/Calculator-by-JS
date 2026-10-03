@@ -27,25 +27,22 @@ body {
 	margin-right: 15px;
 	border: 2px solid pink;
 	border-radius: 12px;
-	height: 70px;
+	height: 90px;
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
 }
 
 .buttons {
 	margin: 15px;
-	border: 2px solid pink;
 	border-radius: 12px;
 	flex: 1;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 8px;
-	padding: 10px;
 }
 
 .buttons button {
-	border-radius: 5px;
+	border-radius: 15px;
 	border: 1px solid pink;
 	background-color: #1a1a1a;
 	color: white;
