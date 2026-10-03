@@ -57,6 +57,11 @@ body {
 	color: black;
 }
 
-#ac, #e {
+.buttons button:active {
+	transform: scale(0.95);
+}
+
+#ac,
+#e {
 	width: calc((100% - 8px) / 2);
 }
