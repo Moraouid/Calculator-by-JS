@@ -16,6 +16,8 @@ screen.textContent = `${numberOfScreen}`;
 
 numbers.forEach((number) => {
 	number.addEventListener("click", () => {
+		if (screen.textContent.length >= 8 && !newNumber)
+			return;
 		if (screen.textContent == 0 || newNumber === true) {
 			numberOfScreen = `${number.textContent}`
 			newNumber = false;
@@ -87,17 +89,17 @@ del.addEventListener("click", () => {
 
 function subtract(num1, num2) {
 	numberOfScreen = num1 - num2;
-	screen.textContent = numberOfScreen;
+	screen.textContent = `${numberOfScreen}`.slice(0, 8);
 }
 
 function add(num1, num2) {
 	numberOfScreen = Number(num1) + Number(num2);
-	screen.textContent = numberOfScreen;
+	screen.textContent = `${numberOfScreen}`.slice(0, 8);
 }
 
 function multiply(num1, num2) {
 	numberOfScreen = num1 * num2;
-	screen.textContent = numberOfScreen;
+	screen.textContent = `${numberOfScreen}`.slice(0, 8);
 }
 
 function divide(num1, num2) {
@@ -112,7 +114,7 @@ function divide(num1, num2) {
 		return;
 	}
 	numberOfScreen = num1 / num2;
-	screen.textContent = numberOfScreen;
+	screen.textContent = `${numberOfScreen}`.slice(0, 8);
 }
 
 function operate(num1, num2, op) {
