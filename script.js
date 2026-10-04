@@ -16,6 +16,10 @@ screen.textContent = `${numberOfScreen}`;
 
 numbers.forEach((number) => {
 	number.addEventListener("click", () => {
+		if (number.textContent === ".") {
+			if (String(numberOfScreen).includes("."))
+				return;
+		}
 		if (screen.textContent == 0 || newNumber === true) {
 			numberOfScreen = `${number.textContent}`
 			newNumber = false;
