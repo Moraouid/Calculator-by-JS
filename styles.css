@@ -30,6 +30,15 @@ body {
 	height: 90px;
 	display: flex;
 	align-items: center;
+	justify-content: right;
+	font-family: 'Digital', sans-serif;
+	color: white;
+}
+
+.number {
+	font-weight: bold;
+	font-size: 75px;
+	margin-right: 15px;
 }
 
 .buttons {
