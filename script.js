@@ -16,8 +16,6 @@ screen.textContent = `${numberOfScreen}`;
 
 numbers.forEach((number) => {
 	number.addEventListener("click", () => {
-		if (screen.textContent.length >= 8 && !newNumber)
-			return;
 		if (screen.textContent == 0 || newNumber === true) {
 			numberOfScreen = `${number.textContent}`
 			newNumber = false;
@@ -25,6 +23,8 @@ numbers.forEach((number) => {
 		else
 			numberOfScreen += `${number.textContent}`
 		screen.textContent = `${numberOfScreen}`;
+
+		screen.parentElement.scrollLeft = screen.parentElement.scrollWidth;
 
 		if (!flag) {
 			num1 = numberOfScreen;
@@ -89,17 +89,17 @@ del.addEventListener("click", () => {
 
 function subtract(num1, num2) {
 	numberOfScreen = num1 - num2;
-	screen.textContent = `${numberOfScreen}`.slice(0, 8);
+	screen.textContent = numberOfScreen;
 }
 
 function add(num1, num2) {
 	numberOfScreen = Number(num1) + Number(num2);
-	screen.textContent = `${numberOfScreen}`.slice(0, 8);
+	screen.textContent = numberOfScreen;
 }
 
 function multiply(num1, num2) {
 	numberOfScreen = num1 * num2;
-	screen.textContent = `${numberOfScreen}`.slice(0, 8);
+	screen.textContent = numberOfScreen;
 }
 
 function divide(num1, num2) {
@@ -114,7 +114,7 @@ function divide(num1, num2) {
 		return;
 	}
 	numberOfScreen = num1 / num2;
-	screen.textContent = `${numberOfScreen}`.slice(0, 8);
+	screen.textContent = numberOfScreen;
 }
 
 function operate(num1, num2, op) {
