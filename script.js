@@ -24,20 +24,23 @@ numbers.forEach((number) => {
 			numberOfScreen += `${number.textContent}`
 		screen.textContent = `${numberOfScreen}`;
 
-		if (flag === false) {
+		if (!flag) {
 			num1 = numberOfScreen;
 		}
 		else {
 			num2 = numberOfScreen;
 		}
-		console.log(num1);
-		console.log(num2);
-
 	});
 });
 
 ops.forEach((op) => {
 	op.addEventListener("click", () => {
+		if (flag && !newNumber) {
+			operate(num1, num2, operator);
+			num1 = numberOfScreen;
+			num2 = 0;
+		}
+
 		operator = op.textContent === '×' ? '*' : op.textContent;
 		flag = true;
 		newNumber = true;
@@ -45,7 +48,14 @@ ops.forEach((op) => {
 });
 
 equal.addEventListener("click", () => {
-	operate(num1, num2, operator);
+	if (operator !== undefined) {
+		operate(num1, num2, operator);
+
+		num1 = numberOfScreen;
+		num2 = 0;
+		flag = true;
+		newNumber = true;
+	}
 });
 
 ac.addEventListener("click", () => {
@@ -59,10 +69,20 @@ ac.addEventListener("click", () => {
 });
 
 del.addEventListener("click", () => {
+	if (newNumber)
+		return;
+
 	numberOfScreen = screen.textContent.slice(0, -1);
+
 	if (numberOfScreen === "")
 		numberOfScreen = 0;
+
 	screen.textContent = numberOfScreen;
+
+	if (!flag)
+		num1 = numberOfScreen;
+	else
+		num2 = numberOfScreen;
 });
 
 function subtract(num1, num2) {
@@ -81,6 +101,16 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
+	if (Number(num2) === 0) {
+		screen.textContent = "Error";
+		num1 = 0;
+		num2 = 0;
+		operator = undefined;
+		flag = false;
+		newNumber = true;
+		numberOfScreen = 0;
+		return;
+	}
 	numberOfScreen = num1 / num2;
 	screen.textContent = numberOfScreen;
 }
